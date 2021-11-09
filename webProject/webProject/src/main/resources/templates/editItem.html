@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Item</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<th:block th:include="/_menu"></th:block>
+
+<h3>Редактировать товар:</h3>
+
+<form name='fe' th:action="@{/editItem}" method='POST'>
+    <table id="mitedit"  border="1" cellpadding="5">
+        <tr>
+            <th width="100px">Client</th>
+            <th width="100px">ItemID</th>
+            <th width="100px">Description</th>
+            <th width="100px">Dimensions</th>
+            <th width="100px">Type packaging</th>
+            <th width="100px">Delivery type</th>
+            <th width="100px">Date receipt</th>
+            <th width="100px">Action</th>
+        </tr>
+        <tr>
+                  <td align="center"><p><select onchange="func(this)" name="client">
+                <option value=""> -- </option>
+                <option th:each="client : ${clientRepository}"
+                        th:value="${client.id}"
+                        th:utext="${client.client}"/>
+            </select></p></td>
+                        <td align="center"><p><select id="itemJson" name="itemId">
+                            <option value=""> -- </option>
+                        </select></p></td>
+            <td align="center"><select name="description" id="des">
+                <option value="" selected>--</option>
+                <option value="beauty">beauty</option>
+                <option value="bicycle">bicycle</option>
+                <option value="book">book</option>
+                <option value="car parts">car parts</option>
+                <option value="clothes">clothes</option>
+                <option value="correspondence">correspondence</option>
+                <option value="doors">doors</option>
+                <option value="eat">eat</option>
+                <option value="electronic" >electronic</option>
+                <option value="furniture">furniture</option>
+                <option value="glass">glass</option>
+                <option value="furniture">furniture</option>
+                <option value="goods for cottages">goods for cottages</option>
+                <option value="goods for tourism">goods for tourism</option>
+                <option value="health">health</option>
+                <option value="kitchen accessories">kitchen accessories</option>
+                <option value="leisure goods">leisure goods</option>
+                <option value="seeds of plants">seeds of plants</option>
+                <option value="shoes">shoes</option>
+                <option value="sports goods">sports goods</option>
+                <option value="other">other</option>
+            </select></td>
+            <td align="center"><select name="dimensions" id="dim">
+                <option value="" selected>--</option>
+                <option value="small" >small</option>
+                <option value="medium">medium</option>
+                <option value="big">big</option>
+            </select></td>
+            <td align="center"><select name="type_packaging" id="typeP">
+                <option value="" selected>--</option>
+                <option value="soft" >soft</option>
+                <option value="solid">solid</option>
+            </select></td>
+            <td align="center"><select name="delivery_type" id="typeD">
+                <option value="" selected>--</option>
+                <option value="pickup" >pickup</option>
+                <option value="delivery to client">delivery to client</option>
+            </select></td>
+            <td align="center"><input type="date" name="date_receipt"></td>
+            <td align="center">
+                <input name="submit" type="submit" value="Редактировать товар" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+<script>
+    function func(select){
+        console.log(select.options[select.selectedIndex].text);
+        $.ajax({
+            url: "/getItems", //нужный адрес переход
+            method: "post",
+            cache: false,
+            dataType: "html",
+            data: {"name":select.options[select.selectedIndex].text},
+            success: function (data) {
+                console.log(data)
+                let jSondata = JSON.parse(data);
+                let select = document.getElementById("itemJson");
+                select.options.length = 0;
+                let option;
+                for(let i =0; i<jSondata["data"].length; i++){
+                    option = new Option(jSondata["data"][i], jSondata["data"][i]);
+                    select.options[select.options.length] = option;
+                }
+            }
+        });
+    }
+
+    jQuery('.name').each( function(){
+        jQuery(this).html( jQuery(this).find('option').sort(function(a, b) {
+            return a.text == b.text ? 0 : a.text < b.text ? -1 : 1
+        }) );
+    });
+
+</script>
+
+</body>
+</html>

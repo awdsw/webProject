@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <!-- Настройка viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit Item</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<th:block th:include="/_menu"></th:block>
+
+<h3>Информация о товарах клиента:</h3>
+
+<form name='fe'>
+    <table id="mitedit"  border="1" cellpadding="5">
+        <tr>
+            <th width="100px">Client</th>
+            <th width="100px">Description</th>
+            <th width="100px">Dimensions</th>
+            <th width="100px">Type packaging</th>
+            <th width="100px">Delivery type</th>
+            <th width="100px">Date receipt</th>
+        </tr>
+        <tr>
+            <td align="center"><p>Ожидание</p></td>
+            <td align="center"><p>Ожидание</p></td>
+            <td align="center"><p>Ожидание</p></td>
+            <td align="center"><p>Ожидание</p></td>
+            <td align="center"><p>Ожидание</p></td>
+            <td align="center"><p>Ожидание</p></td>
+        </tr>
+    </table>
+</form>
+
+
+</body>
+</html>

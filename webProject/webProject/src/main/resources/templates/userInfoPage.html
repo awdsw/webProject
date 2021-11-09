@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>User Info</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<th:block th:include="/_menu"></th:block>
+
+
+<h2>User Info Page</h2>
+<h3>Welcome : <span th:utext="${#request.userPrincipal.name}"></span></h3>
+
+<br/><br/>
+
+<h3>Информация о ваших товарах</h3>
+
+
+<div>
+<table id="ut" th:each="item : ${userInfo}"  border="1" cellpadding="5">
+    <form name='infoItem' th:action="@{/infoDU}" method='POST'>
+    <tr>
+        <th width="100px">Name</th>
+        <th width="100px">Description</th>
+        <th width="100px">Dimensions</th>
+        <th width="100px">Type packaging</th>
+        <th width="100px">Delivery type</th>
+        <th width="100px">Date receipt</th>
+        <th width="100px">Action</th>
+    </tr>
+    <tr>
+        <input type="text" name="id" th:value="${item.id}" hidden>
+        <td align="center"><p th:text="${cLIt}"/></td>
+        <td align="center"><p th:text="${item.description}"/></td>
+        <td align="center"><p th:text="${item.dimensions}"/></td>
+        <td align="center"><p th:text="${item.type_packaging}"/></td>
+        <td align="center">
+            <div class="rad">
+                <div class="rad1"><input type="radio" id="deliveryChoice1"
+                            name="delivery_type" value="pickup">
+                    <label id="dc1" for="deliveryChoice1">Pickup</label>
+                </div>
+                <div class="rad2">
+                    <input type="radio" id="deliveryChoice2"
+                           name="delivery_type" value="delivery to client">
+                    <label id="dc2" for="deliveryChoice2">Delivery to client</label>
+                </div>
+            </div>
+        </td>
+        <td align="center"><p th:text="${item.date_receipt}"/></td>
+        <td align="center">
+            <input type="submit" value="Принять" onclick="func()" />
+        </td>
+    </tr>
+</form>
+</table>
+</div>
+
+<script>
+
+function func() {
+    var delivery = document.querySelector('input[name="delivery_type"]:checked');
+    var val = $("input[name=delivery_type]").val();
+    if (!delivery) {
+        alert('You did not select a delivery type.');
+        return false;
+    }
+    else if
+        (val == false) document.location.href='userInfoPage';
+    else
+        return true;
+}
+
+</script>
+
+</body>
+
+</html>

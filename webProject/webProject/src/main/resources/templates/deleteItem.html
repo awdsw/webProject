@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Item</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<th:block th:include="/_menu"></th:block>
+<h3>Удалить товар клиента:</h3>
+
+<form name='fd' th:action="@{/deleteItem}" method='POST'>
+    <table id="mitdel"  border="1" cellpadding="5">
+        <tr>
+            <th width="100px">Client</th>
+            <th width="100px">ItemID</th>
+            <th width="100px">Action</th>
+        </tr>
+        <tr>
+            <td align="center"><p><select class="name" onchange="func(this)">
+                <option value=""> -- </option>
+                <option th:each="client : ${clientRepository}"
+                        th:value="${client.id}"
+                        th:utext="${client.client}"/>
+            </select></p></td>
+                        <td align="center"><p><select id="itemJson" name="id">
+                            <option value=""> -- </option>
+                        </select></p></td>
+            <td align="center"><input name="submit" type="submit" value="Удалить товар" /></td>
+        </tr>
+    </table>
+</form>
+
+<script>
+    function func(select){
+        console.log(select.options[select.selectedIndex].text);
+        $.ajax({
+            url: "/getItems", //нужный адрес переход
+            method: "post",
+            cache: false,
+            dataType: "html",
+            data: {"name":select.options[select.selectedIndex].text},
+            success: function (data) {
+                console.log(data)
+                let jSondata = JSON.parse(data);
+                let select = document.getElementById("itemJson");
+                select.options.length = 0;
+                let option;
+                for(let i =0; i<jSondata["data"].length; i++){
+                    option = new Option(jSondata["data"][i], jSondata["data"][i]);
+                    select.options[select.options.length] = option;
+                }
+            }
+        });
+    }
+
+    jQuery('.name').each( function(){
+        jQuery(this).html( jQuery(this).find('option').sort(function(a, b) {
+            return a.text == b.text ? 0 : a.text < b.text ? -1 : 1
+        }) );
+    });
+</script>
+
+</body>
+</html>

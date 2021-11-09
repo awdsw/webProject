@@ -1,0 +1,74 @@
+body {
+    background-color: #c8ff8d;
+}
+
+#defa, #defe, #defd, #icl, #icli, #h, #ui, #em, #gen, #log {
+    text-decoration: none;
+    cursor: default;
+    color: black;
+}
+#defa, #defe, #defd, #icl, #icli, #h, #ui, #em, #gen, #log:hover {
+    cursor: default;
+}
+
+#ut {
+    width: 100%; /* Ширина таблицы */
+    vertical-align: top; /* Выравнивание по верхнему краю */
+    padding: 5px; /* Поля вокруг содержимого ячеек */
+}
+
+#it {
+    width: 100%; /* Ширина таблицы */
+    vertical-align: top; /* Выравнивание по верхнему краю */
+    padding: 5px; /* Поля вокруг содержимого ячеек */
+}
+
+#mct {
+    width: 100%; /* Ширина таблицы */
+    vertical-align: top; /* Выравнивание по верхнему краю */
+    padding: 5px; /* Поля вокруг содержимого ячеек */
+}
+
+#mit {
+    width: 100%; /* Ширина таблицы */
+    vertical-align: top; /* Выравнивание по верхнему краю */
+    padding: 5px; /* Поля вокруг содержимого ячеек */
+}
+
+#mitedit {
+    width: 100%; /* Ширина таблицы */
+    vertical-align: top; /* Выравнивание по верхнему краю */
+    padding: 5px; /* Поля вокруг содержимого ячеек */
+}
+
+#mitdel {
+    width: 100%; /* Ширина таблицы */
+    vertical-align: top; /* Выравнивание по верхнему краю */
+    padding: 5px; /* Поля вокруг содержимого ячеек */
+}
+
+#mitadd {
+    width: 100%; /* Ширина таблицы */
+    vertical-align: top; /* Выравнивание по верхнему краю */
+    padding: 5px; /* Поля вокруг содержимого ячеек */
+}
+
+.rad {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 5px;
+}
+.rad1{
+    padding: 5px;
+}
+.rad2{
+    padding: 5px;
+}
+
+.pic{
+    text-align: center;
+}
+.rw {
+    color: red;
+}

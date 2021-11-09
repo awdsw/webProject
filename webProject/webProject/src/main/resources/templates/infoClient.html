@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title th:utext="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<th:block th:include="/_menu"></th:block>
+
+</form>
+
+<h3>Информация о клиентах</h3>
+<form name='f'>
+    <table id="mct" th:each="client : ${clientRepository}" border="2" cellpadding="5">
+        <tr>
+            <th width="200px">Client</th>
+            <th width="200px">Phone</th>
+            <th width="200px">E-mail</th>
+            <th width="200px">Delivery address</th>
+        </tr>
+        <tr>
+            <td align="center"><p th:text="${client.client}"/></td>
+            <td align="center"><p th:text="${client.phone}"/></td>
+            <td align="center"><p th:text="${client.email}"/></td>
+            <td align="center"><p th:text="${client.delivery_address}"/></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

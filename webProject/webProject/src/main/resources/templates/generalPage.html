@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:utext="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- Include _menu.html -->
+<th:block th:include="/_menu"></th:block>
+
+<h2>Manager Page</h2>
+<h3>Welcome :
+    <span th:utext="${#request.userPrincipal.name}"></span>
+</h3>
+<b>This is protected page!</b>
+
+<h3>Информация и изменение данных о товарах клиента</h3>
+<form name='f' method='POST'>
+    <table id="mit" border="1" cellpadding="5">
+        <tr>
+            <th width="100px">Информация о клиентах</th>
+            <th width="100px">Информация о товарах клиента</th>
+            <th width="100px">Добавить товар клиенту</th>
+            <th width="100px">Удалить товар клиенту</th>
+            <th width="100px">Редактировать товар клиенту</th>
+        </tr>
+        <tr>
+            <td align="center"><button type="button">
+                <a id="icl" th:href="@{/infoClient}">Information Clients</a>
+            </button></td>
+            <td align="center"><button type="button">
+                <a id="icli" th:href="@{/infoClientItem}">Information Items</a>
+            </button></td>
+            <td align="center"><button type="button">
+                <a id="defa" th:href="@{/addItem}">Add</a>
+            </button></td>
+            <td align="center"><button type="button">
+                <a id="defd" th:href="@{/deleteItem}">Delete</a>
+            </button></td>
+            <td align="center"><button type="button">
+                <a id="defe" th:href="@{/editItem}">Edit</a>
+            </button></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>User Info</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<th:block th:include="/_menu"></th:block>
+
+
+<h2>User Info Page</h2>
+<h3>Welcome : <span th:utext="${#request.userPrincipal.name}"></span></h3>
+<b>This is protected page!</b>
+
+<br/><br/>
+
+<h3>Информация о доставке ваших товаров</h3>
+<div>
+    <table id="ut" th:each="item : ${infoUser}"  border="1" cellpadding="5">
+        <form name='infoitem' >
+            <tr>
+                <th width="100px">№ Item</th>
+                <th width="100px">Information</th>
+            </tr>
+            <tr>
+                <td align="center"><p th:text="${item.id}"/></td>
+                <td align="center"><p> Ожидание....</p></td>
+            </tr>
+
+        </form>
+    </table>
+</div>
+
+<div class="rw">
+    <p>Товар №-- Вы выбрали самовывоз, можете приехать за заказом.</p>
+    <p>Товар №-- Вы выбрали доставку, ждите когда менеджер одобрит ваш заказ.</p>
+</div>
+
+</body>
+</html>
