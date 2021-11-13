@@ -60,12 +60,6 @@ public class ClientItem {
     public ClientItem() {
     }
 
-//    public ClientItems(Item item, Client client, boolean order_status) {
-//        this.item = item;
-//        this.client = client;
-//        this.order_status = order_status;
-//    }
-
     public ClientItem(Item item, Client client) {
         this.item = item;
         this.client = client;

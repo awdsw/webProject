@@ -9,43 +9,40 @@
 <body>
 
 <!-- Include _menu.html -->
-<th:block th:include="/_menu"></th:block>
+<th:block th:include="_menu"></th:block>
 
 
 <h2>Employee Page</h2>
 <h3>Welcome : <span th:utext="${#request.userPrincipal.name}"></span></h3>
-<b>This is protected page!</b>
 
-<br/><br/>
+<br/>
 
-<div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
-
-
-<h3>Информация о товарах</h3>
-<form name='infoDE' th:action="@{/infoDE}" method='POST'>
+<h3>Информация о товарах клиента</h3>
 <table id="it" th:each="item : ${itemRepository}" border="1" cellpadding="5">
-    <tr>
-        <th width="100px">Client</th>
-        <th width="100px">Description</th>
-        <th width="100px">Dimensions</th>
-        <th width="100px">Type packaging</th>
-        <th width="100px">Delivery type</th>
-        <th width="100px">Date receipt</th>
-        <th width="100px">Action</th>
-    </tr>
-    <tr>
-        <td align="center"><p th:text="${clientItemRepository}"/></td>
-        <td align="center"><p th:text="${item.description}"/></td>
-        <td align="center"><p th:text="${item.dimensions}"/></td>
-        <td align="center"><p th:text="${item.type_packaging}"/></td>
-        <td align="center"><p th:text="${item.delivery_type}"/></td>
-        <td align="center"><p th:text="${item.date_receipt}"/></td>
-        <td align="center">
-            <input name="submit" type="submit" value="Отправить" />
-        </td>
-    </tr>
+    <form name='infoDE' th:action="@{/infoDE}" method='POST'>
+        <tr>
+            <th width="100px">Client</th>
+            <th width="100px">Description</th>
+            <th width="100px">Dimensions</th>
+            <th width="100px">Type packaging</th>
+            <th width="100px">Delivery type</th>
+            <th width="100px">Date receipt</th>
+            <th width="100px">Action</th>
+        </tr>
+        <tr>
+            <input type="text" name="id" th:value="${item.item.id}" hidden>
+            <td align="center"><p th:text="${item.client.client}"/></td>
+            <td align="center"><p th:text="${item.item.description}"/></td>
+            <td align="center"><p th:text="${item.item.dimensions}"/></td>
+            <td align="center"><p th:text="${item.item.type_packaging}"/></td>
+            <td align="center"><p th:text="${item.item.delivery_type}"/></td>
+            <td align="center"><p th:text="${item.item.date_receipt}"/></td>
+            <td align="center">
+                <input name="submit" type="submit" value="Отправить" />
+            </td>
+        </tr>
+    </form>
 </table>
-</form>
 
 </body>
 </html>

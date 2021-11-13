@@ -7,15 +7,14 @@
 </head>
 
 <body>
-    <!-- Include _menu.html -->
-    <th:block th:include="/_menu"></th:block>
+<!-- Include _menu.html -->
+<th:block th:include="_menu"></th:block>
 
-    <h2>Message : <span th:utext="${message}"></span></h2>
+<h1 align="center"><span th:utext="${message}"></span></h1>
 
 <div class="pic">
     <img th:src="@{/images/d5f9fbe08c848944817834082d04bc49.jpg}" alt=""/>
 </div>
-
 
 </body>
 </html>

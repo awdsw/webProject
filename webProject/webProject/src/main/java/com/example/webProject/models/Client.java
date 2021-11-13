@@ -41,11 +41,6 @@ public class Client {
         return clients;
     }
 
-
-//        public List<Client> getClients() {
-//        return clients;
-//    }
-
     public String toJSON(){
         return "" + id+ "," + "\"" + client +"\""+ "," +"\"" + phone +"\""+ "," +"\"" + email +"\""
                 + "," +"\"" + delivery_address +"\"";

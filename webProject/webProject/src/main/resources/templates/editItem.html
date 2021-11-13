@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<th:block th:include="/_menu"></th:block>
+<th:block th:include="_menu"></th:block>
 
 <h3>Редактировать товар:</h3>
 
@@ -24,15 +24,15 @@
             <th width="100px">Action</th>
         </tr>
         <tr>
-                  <td align="center"><p><select onchange="func(this)" name="client">
+            <td align="center"><p><select class="name" onchange="func(this)" name="client">
                 <option value=""> -- </option>
                 <option th:each="client : ${clientRepository}"
                         th:value="${client.id}"
                         th:utext="${client.client}"/>
             </select></p></td>
-                        <td align="center"><p><select id="itemJson" name="itemId">
-                            <option value=""> -- </option>
-                        </select></p></td>
+            <td align="center"><p><select id="itemJson" name="itemId">
+                <option value=""> -- </option>
+            </select></p></td>
             <td align="center"><select name="description" id="des">
                 <option value="" selected>--</option>
                 <option value="beauty">beauty</option>

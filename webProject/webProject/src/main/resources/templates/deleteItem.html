@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<th:block th:include="/_menu"></th:block>
+<th:block th:include="_menu"></th:block>
 <h3>Удалить товар клиента:</h3>
 
 <form name='fd' th:action="@{/deleteItem}" method='POST'>
@@ -24,9 +24,9 @@
                         th:value="${client.id}"
                         th:utext="${client.client}"/>
             </select></p></td>
-                        <td align="center"><p><select id="itemJson" name="id">
-                            <option value=""> -- </option>
-                        </select></p></td>
+            <td align="center"><p><select id="itemJson" name="id">
+                <option value=""> -- </option>
+            </select></p></td>
             <td align="center"><input name="submit" type="submit" value="Удалить товар" /></td>
         </tr>
     </table>

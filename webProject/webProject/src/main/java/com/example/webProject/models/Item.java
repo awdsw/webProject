@@ -16,11 +16,11 @@ public class Item {
     private String type_packaging;
     private String delivery_type;
     private String date_receipt;
-//    @OneToMany (fetch = FetchType.EAGER, mappedBy = "id")
-//    private List<ClientItem> items;
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "id_client")
-//   private Client client;
+    @OneToMany (fetch = FetchType.EAGER, mappedBy = "id")
+    private List<ClientItem> items;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_client")
+   private Client client;
 
 
     @Override

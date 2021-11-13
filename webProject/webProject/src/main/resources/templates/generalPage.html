@@ -9,13 +9,13 @@
 </head>
 <body>
 <!-- Include _menu.html -->
-<th:block th:include="/_menu"></th:block>
+<th:block th:include="_menu"></th:block>
 
 <h2>Manager Page</h2>
 <h3>Welcome :
     <span th:utext="${#request.userPrincipal.name}"></span>
 </h3>
-<b>This is protected page!</b>
+<br/>
 
 <h3>Информация и изменение данных о товарах клиента</h3>
 <form name='f' method='POST'>

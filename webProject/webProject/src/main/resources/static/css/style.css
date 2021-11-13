@@ -13,7 +13,9 @@ body {
 
 #ut {
     width: 100%; /* Ширина таблицы */
+    height: 100%;
     vertical-align: top; /* Выравнивание по верхнему краю */
+    align-content: center;
     padding: 5px; /* Поля вокруг содержимого ячеек */
 }
 
@@ -53,22 +55,35 @@ body {
     padding: 5px; /* Поля вокруг содержимого ячеек */
 }
 
-.rad {
+
+#rad {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin: 5px;
+}
+#dc2 {
+    align-content: center;
 }
 .rad1{
-    padding: 5px;
+    margin: 5px;
 }
+
 .rad2{
-    padding: 5px;
+    margin: 5px;
 }
 
 .pic{
     text-align: center;
 }
+
+#rt{
+    color: red;
+}
+
+#rtxt{
+    color: red;
+}
+
 .rw {
     color: red;
 }

@@ -8,34 +8,37 @@
 </head>
 <body>
 
-<th:block th:include="/_menu"></th:block>
+<th:block th:include="_menu"></th:block>
 
 
-<h2>User Info Page</h2>
+<h2>Employee Page</h2>
 <h3>Welcome : <span th:utext="${#request.userPrincipal.name}"></span></h3>
-<b>This is protected page!</b>
 
-<br/><br/>
-<h3>Информация об отправленных товарах</h3>
+<br/>
+<h3>Отправленные товары</h3>
 <div>
-    <table id="ut" th:each="item : ${infoUser}"  border="1" cellpadding="5">
-        <form name='infoDE' >
-            <tr>
-                <th width="100px">№ Item</th>
-                <th width="100px">Information</th>
-            </tr>
-            <tr>
-                <td align="center"><p th:text="${item.id}"/></td>
-                <td align="center"><p> Ожидание....</p></td>
-            </tr>
-
-        </form>
+    <table id="it" th:each="item : ${items}" border="1" cellpadding="5">
+        <tr>
+            <th width="100px">№ Item</th>
+            <th width="100px">Client</th>
+            <th width="100px">Description</th>
+            <th width="100px">Dimensions</th>
+            <th width="100px">Type packaging</th>
+            <th width="100px">Delivery type</th>
+            <th width="100px">Date receipt</th>
+            <th width="100px">Order status</th>
+        </tr>
+        <tr>
+            <td align="center"><p th:text="${item.item.id}"/></td>
+            <td align="center"><p th:text="${item.client.client}"/></td>
+            <td align="center"><p th:text="${item.item.description}"/></td>
+            <td align="center"><p th:text="${item.item.dimensions}"/></td>
+            <td align="center"><p th:text="${item.item.type_packaging}"/></td>
+            <td align="center"><p th:text="${item.item.delivery_type}"/></td>
+            <td align="center"><p th:text="${item.item.date_receipt}"/></td>
+            <td align="center"><p id="rtxt">Отправлен</p></td>
+        </tr>
     </table>
-</div>
-
-<div class="rw">
-    <p>Товар №-- Отправлен</p>
-    <p></p>
 </div>
 
 </body>

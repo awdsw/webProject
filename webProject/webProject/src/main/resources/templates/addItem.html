@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<th:block th:include="/_menu"></th:block>
+<th:block th:include="_menu"></th:block>
 <h3>Добавить товар клиенту:</h3>
 <form name='fa' th:action="@{/addItem}" method='POST'>
     <table id="mitadd"  border="1" cellpadding="5">
@@ -57,7 +57,7 @@
                 <option value="small" >small</option>
                 <option value="medium">medium</option>
                 <option value="big">big</option>
-                </select></td>
+            </select></td>
             <td align="center"><select name="type_packaging" id="typeP">
                 <option value="" selected>--</option>
                 <option value="soft" >soft</option>

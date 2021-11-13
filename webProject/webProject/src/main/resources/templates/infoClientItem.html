@@ -11,12 +11,12 @@
 </head>
 <body>
 
-<th:block th:include="/_menu"></th:block>
+<th:block th:include="_menu"></th:block>
 
 <h3>Информация о товарах клиента:</h3>
 
-<form name='fe'>
-    <table id="mitedit"  border="1" cellpadding="5">
+<div>
+    <table id="it" th:each="item : ${items}" border="1" cellpadding="5">
         <tr>
             <th width="100px">Client</th>
             <th width="100px">Description</th>
@@ -26,16 +26,15 @@
             <th width="100px">Date receipt</th>
         </tr>
         <tr>
-            <td align="center"><p>Ожидание</p></td>
-            <td align="center"><p>Ожидание</p></td>
-            <td align="center"><p>Ожидание</p></td>
-            <td align="center"><p>Ожидание</p></td>
-            <td align="center"><p>Ожидание</p></td>
-            <td align="center"><p>Ожидание</p></td>
+            <td align="center"><p th:text="${item.client.client}"/></td>
+            <td align="center"><p th:text="${item.item.description}"/></td>
+            <td align="center"><p th:text="${item.item.dimensions}"/></td>
+            <td align="center"><p th:text="${item.item.type_packaging}"/></td>
+            <td align="center"><p th:text="${item.item.delivery_type}"/></td>
+            <td align="center"><p th:text="${item.item.date_receipt}"/></td>
         </tr>
     </table>
-</form>
-
+</div>
 
 </body>
 </html>
