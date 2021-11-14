@@ -49,13 +49,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // /userInfo page requires login as ROLE_USER, ROLE_EMPLOYEE or ROLE_MANAGER.
         // If no login, it will redirect to /login page.
-        http.authorizeRequests().antMatchers("/userInfo").access("hasRole('ROLE_CLIENT')");
+        http.authorizeRequests().antMatchers("/userInfo","/infoDU").access("hasRole('ROLE_CLIENT')");
 
         // For Worcker only.
-        http.authorizeRequests().antMatchers("/employee").access("hasAnyRole('ROLE_EMPLOYEE','ROLE_MANAGER')");
+        http.authorizeRequests().antMatchers("/employee", "/infoDE").access("hasAnyRole('ROLE_EMPLOYEE','ROLE_MANAGER')");
 
         // For Manager only.
-        http.authorizeRequests().antMatchers("/manager").access("hasRole('ROLE_MANAGER')");
+        http.authorizeRequests().antMatchers("/manager","/infoClient", "/infoClientItem",
+                "/addItem", "/deleteItem", "/editItem").access("hasRole('ROLE_MANAGER')");
 
         // When the user has logged in as XX.
         // But access a page that requires role YY,
