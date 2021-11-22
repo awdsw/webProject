@@ -1,7 +1,5 @@
 package com.example.webProject.models;
 
-import com.example.webProject.entity.AppUser;
-
 import javax.persistence.*;
 
 @Entity

@@ -1,8 +1,6 @@
 package com.example.webProject.models;
 
-
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -16,11 +14,11 @@ public class Item {
     private String type_packaging;
     private String delivery_type;
     private String date_receipt;
-    @OneToMany (fetch = FetchType.EAGER, mappedBy = "id")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "id")
     private List<ClientItem> items;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_client")
-   private Client client;
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "id_client")
+//    private Client client;
 
 
     @Override
@@ -33,13 +31,6 @@ public class Item {
                 ", date_receipt=" + date_receipt +
                 '}';
     }
-
-//    public List<Item> getItems() {
-//        return items;
-//    }
-//        public List<ClientItem> getItems() {
-//        return items;
-//    }
 
     public long getId() {
         return id;
@@ -89,13 +80,6 @@ public class Item {
         this.date_receipt = date_receipt;
     }
 
-//    public Client getClient() {
-//        return client;
-//    }
-//
-//    public void setClient(Client client) {
-//        this.client = client;
-//    }
 
     public Item() {
     }
@@ -106,6 +90,5 @@ public class Item {
         this.type_packaging = type_packaging;
         this.delivery_type = delivery_type;
         this.date_receipt = date_receipt;
-//       this.client = client;
     }
 }

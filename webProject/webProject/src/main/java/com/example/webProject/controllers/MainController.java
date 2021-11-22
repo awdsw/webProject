@@ -14,7 +14,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -24,7 +23,7 @@ import java.util.List;
 public class MainController {
 
     private static final Comparator<ClientItem> COMPARATOR =
-            Comparator.comparing(client -> client.getClient().getClient());
+            Comparator.comparing(client -> client.getClient().getClient()); //ссылка на метод --- лямбда выражение
 
     @Autowired
     ClientRepository clientRepository;
@@ -50,7 +49,7 @@ public class MainController {
         for (Client client : clientRepository.findAll()) {
             clients.add(client);
         }
-        clients.sort(Comparator.comparing(Client::getClient));
+        clients.sort(Comparator.comparing(Client::getClient)); //ссылка на метод
         model.addAttribute("clientRepository", clients);
         return "infoClient";
     }

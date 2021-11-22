@@ -1,8 +1,6 @@
 package com.example.webProject.models;
 
-//import javax.persistence.Entity;
 import com.example.webProject.entity.AppUser;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,14 +13,13 @@ public class Client {
     private String phone;
     private String email;
     private String delivery_address;
+
     @OneToMany (fetch = FetchType.EAGER, mappedBy = "id")
     private List<ClientItem> clients;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID")
     private AppUser appUser;
-
-
 
     @Override
     public String toString() {
